@@ -14,6 +14,10 @@ public class Jugador {
     private String nombre;
     private ArrayList<Ficha> mano;
 
+    public ArrayList<Ficha> getMano() {
+        return mano;
+    }
+
     public Jugador(String nombre, ArrayList<Ficha> mano) {
         this.nombre = nombre;
         this.mano = new ArrayList<>();

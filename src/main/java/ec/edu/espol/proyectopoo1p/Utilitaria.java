@@ -24,6 +24,9 @@ public class Utilitaria {
             Ficha n = new Ficha(aleatorio1,aleatorio2);
             manojug.add(n);
         }
+        aleatorio1 = rd.nextInt(1,6);
+        aleatorio2 = rd.nextInt(1,6);
+        manojug.add(new FichaComodin(aleatorio1,aleatorio2));
         return manojug;
     }
 }

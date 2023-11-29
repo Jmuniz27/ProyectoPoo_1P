@@ -23,7 +23,7 @@ public class Juego {
     public ArrayList<Ficha> getLineajuego() {
         return lineajuego;
     }
-
+    
     public void setLineajuego(ArrayList<Ficha> lineajuego) {
         this.lineajuego = lineajuego;
     }
