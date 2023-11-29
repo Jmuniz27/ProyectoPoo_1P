@@ -10,4 +10,20 @@ package ec.edu.espol.proyectopoo1p;
  */
 public class FichaComodin extends Ficha {
     
+    public FichaComodin(int lado1, int lado2) {
+        super(-1,-1);
+    }
+
+    public void setLado1(int v) {
+        this.lado1 = v;
+    }
+
+    public void setLado2(int v) {
+        this.lado2 = v;
+    }
+
+    @Override
+    public String toString() {
+        return "*" + lado1 + ":" + lado2 + "*";
+    }
 }
