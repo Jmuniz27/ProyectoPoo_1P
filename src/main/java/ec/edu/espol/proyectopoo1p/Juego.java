@@ -5,6 +5,7 @@
 package ec.edu.espol.proyectopoo1p;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -35,7 +36,7 @@ public class Juego {
         this.jugadores = jugadores;
     }
     public void agregarJugador(String nombre){
-        jugadores.add(new Jugador(nombre, Utilitaria.creaManoJugador()));
+        jugadores.add(new Jugador(nombre, Utilitaria.crearManoJugador()));
     }
     public int obtenerValorInicioLinea(){
         return lineajuego.get(0).getLado1();

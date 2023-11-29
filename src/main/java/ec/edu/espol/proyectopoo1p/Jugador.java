@@ -16,7 +16,7 @@ public class Jugador {
 
     public Jugador(String nombre, ArrayList<Ficha> mano) {
         this.nombre = nombre;
-        this.mano = mano;
+        this.mano = new ArrayList<>();
     }
 
     public String getNombre() {

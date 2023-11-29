@@ -24,6 +24,6 @@ public class FichaComodin extends Ficha {
 
     @Override
     public String toString() {
-        return "*" + lado1 + ":" + lado2 + "*";
+        return "*" +super.toString()+ "*";
     }
 }
