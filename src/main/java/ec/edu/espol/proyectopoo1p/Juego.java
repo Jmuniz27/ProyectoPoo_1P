@@ -47,7 +47,7 @@ public class Juego {
     public void mostrarLinea(){
         for(int i = 0; i< lineajuego.size(); i++){
             if(i != lineajuego.size()-1)
-                System.out.println(lineajuego.get(i).toString() + " -");
+                System.out.print(lineajuego.get(i).toString() + " -");
             else
                 System.out.println(lineajuego.get(i).toString());
         }
