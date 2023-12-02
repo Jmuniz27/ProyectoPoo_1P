@@ -6,6 +6,8 @@ package ec.edu.espol.proyectopoo1p;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
+
 
 /**
  *
@@ -109,6 +111,54 @@ public class Juego {
                 }
                 else
                     return resultado;
+            }
+        }
+    }
+    
+    public void maquina(Jugador bot){
+        for(Ficha f: bot.getMano()){
+            if(lineajuego.isEmpty()){
+                lineajuego.add(f);
+                bot.removerFicha(f);
+                break;
+            }else{
+                //si es f/ comodin
+                if(f instanceof FichaComodin){
+                    FichaComodin f2 = (FichaComodin) f;
+                    Random rd = new Random();
+                    //va al inicio o al final
+                    int aleatorio1 = rd.nextInt(0,1);
+                    
+                    //si es que va al inicio
+                    if (aleatorio1 == 0){
+                        f.setLado1(rd.nextInt(1,6));
+                        lineajuego.add(0, f);
+                        bot.removerFicha(f);
+                    }
+                    //si es que va al final
+                    else if (aleatorio1 == 1){
+                        f.setLado2(rd.nextInt(1,6));
+                        lineajuego.add(f);
+                        bot.removerFicha(f);
+                    }
+                }
+                else{
+                    //si no es f comodin
+                    if (lineajuego.isEmpty()){
+                        lineajuego.add(f);
+                    }
+                    else{
+                        if(f.getLado2() == this.obtenerValorInicioLinea() || f.getLado1() == this.ObtenerValorFinLinea()){
+                            if(f.getLado2() == this.obtenerValorInicioLinea()){
+                                lineajuego.add(0, f);
+                            }
+                            else if(f.getLado1() == this.ObtenerValorFinLinea()){
+                                lineajuego.add(f);
+                            }
+                        }
+                    }
+                    
+                }
             }
         }
     }
