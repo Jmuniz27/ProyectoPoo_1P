@@ -65,6 +65,7 @@ public class Juego {
                 f2.setLado1(l1);
                 f2.setLado2(l2);
                 lineajuego.add(f2);
+                resultado = true;
                 return resultado;
             }
             else{
@@ -75,6 +76,7 @@ public class Juego {
                     int l1 = sc.nextInt();
                     f.setLado1(l1);
                     lineajuego.add(0, f);
+                    resultado = true;
                     return resultado;
                 }
                 else{
@@ -82,6 +84,7 @@ public class Juego {
                     int l2 = sc.nextInt();
                     f.setLado2(l2);
                     lineajuego.add(f);
+                    resultado = true;
                     return resultado;
                 }
             }
@@ -89,20 +92,23 @@ public class Juego {
         else{
             if (lineajuego.size()==0){
                 lineajuego.add(f);
+                resultado = true;
                 return resultado;
             }
             else{
                 if(f.getLado2() == this.obtenerValorInicioLinea() || f.getLado1() == this.ObtenerValorFinLinea()){
                     if(f.getLado2() == this.obtenerValorInicioLinea()){
+                        resultado = true;
                         lineajuego.add(0, f);
                     }
                     else if(f.getLado1() == this.ObtenerValorFinLinea()){
+                        resultado = true;
                         lineajuego.add(f);
                     }
-                    return true;
+                    return resultado;
                 }
                 else
-                    return false;
+                    return resultado;
             }
         }
     }
