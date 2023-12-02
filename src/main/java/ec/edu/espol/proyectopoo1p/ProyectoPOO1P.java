@@ -26,11 +26,10 @@ public class ProyectoPOO1P {
         System.out.println("El jugador que va a iniciar el juego es el Jugador: "+ j);
         Jugador juga = juego.getJugadores().get(0);
         Jugador bot = juego.getJugadores().get(1);
-        
-        for (Ficha jf: juga.getMano()){
-            /*Jugador 0: Mano -> 5:2 - 0:1 - *-1:-1* Línea de Juego -> Índice de ficha para jugar (0 es el primero): 0 Movimiento Válido. Nueva Línea de Juego -> 5:2*/
+        juego.mostrarLinea();
+        for (int i = 0; i<juga.getMano().size(); i++){
             System.out.println("Jugador " + j + ":");
-            System.out.println("Mano " + jf.toString());
-            
-        }
+            juego.mostrarLinea();
+            }
+    }
 }
