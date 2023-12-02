@@ -39,7 +39,7 @@ public class Jugador {
         for (Ficha ficha : mano){
             count++;
             if (mano.size() != count)
-                System.out.println(ficha.toString()+"-");
+                System.out.print(ficha.toString()+"-");
             else
                 System.out.println(ficha.toString());
         }
