@@ -17,35 +17,20 @@ public class ProyectoPOO1P {
         Scanner sc = new Scanner(System.in);
         Juego juego = new Juego();
         //Añadir jugadores
-        System.out.println("Ingrese nombre Jugador 0>> ");
-        String j0 = sc.next();
-        System.out.println("Ingrese nombre Jugador 1>> ");
-        String j1 = sc.next();
-        juego.agregarJugador(j0);
-        juego.agregarJugador(j1);
-       
-       //el jugador se escoge al azar
-        Random rd = new Random();
-        int primero = rd.nextInt(0,1);
-        System.out.println("El jugador que va a iniciar el juego es el Jugador: "+ primero);
-        Jugador juga = juego.getJugadores().get(primero);
-        Ficha fSelec = null;
+        System.out.println("Ingrese nombre Jugador>> ");
+        String j = sc.next();
+        juego.agregarJugador(j);
+        juego.agregarJugador("bot");
         
+        //se escoge la persona J
+        System.out.println("El jugador que va a iniciar el juego es el Jugador: "+ j);
+        Jugador juga = juego.getJugadores().get(0);
+        Jugador bot = juego.getJugadores().get(1);
         
-        while(juego.getJugadores().size()!=0 && fSelec == null){
-            //recorrer las fichas del primer jugador
-            for(Ficha f: juga.getMano()){
-                if (juego.agregarFichaLinea(f, juga)) {
-                    fSelec = f;
-                    break;
-                }
-            }
+        for (Ficha jf: juga.getMano()){
+            /*Jugador 0: Mano -> 5:2 - 0:1 - *-1:-1* Línea de Juego -> Índice de ficha para jugar (0 es el primero): 0 Movimiento Válido. Nueva Línea de Juego -> 5:2*/
+            System.out.println("Jugador " + j + ":");
+            System.out.println("Mano " + jf.toString());
+            
         }
-        if (fSelec == null) {
-                juego.getJugadores().remove(juga);
-                if (juego.getJugadores().size()!=0) {
-                    juga = juego.getJugadores().get(0);
-                }
-            }
-    }
 }
