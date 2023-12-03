@@ -43,7 +43,6 @@ public class ProyectoPOO1P {
                 Ficha f = juego.getJugadores().get(0).getMano().get(pos);                
                 boolean a= juego.agregarFichaLinea(f,juego.getJugadores().get(0));//Intenta agregar la ficha
                 while(a==false){ //valida que se cumpla el boolean de aggficha
-                    System.out.println("Aqui cae");
                     System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
                     pos = sc.nextInt();
                     f = juego.getJugadores().get(0).getMano().get(pos);                
