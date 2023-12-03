@@ -149,55 +149,22 @@ public class Juego {
                 bot.removerFicha(f);
                 break;
             }else{
-<<<<<<< HEAD
-=======
-                //si es f/ comodin
-                if(f instanceof FichaComodin){
-                    FichaComodin f2 = (FichaComodin) f;
-                    Random rd = new Random();
-                    //va al inicio o al final
-                    int aleatorio1 = rd.nextInt(0,2);
-                    
-                    //si es que va al inicio
-                    if (aleatorio1 == 0){
-                        f2.setLado1(rd.nextInt(1,7));
-                        lineajuego.add(0, f);
-                        bot.removerFicha(f);
-                    }
-                    //si es que va al final
-                    else if (aleatorio1 == 1){
-                        f2.setLado2(rd.nextInt(1,7));
-                        lineajuego.add(f);
-                        bot.removerFicha(f);
-                    }
-                }
-                else{
->>>>>>> comentarios
                     //si no es f comodin
                     if (lineajuego.isEmpty()){
                         lineajuego.add(f);
                         bot.removerFicha(f);
-<<<<<<< HEAD
                         break;
-=======
->>>>>>> comentarios
                     }
                     else{
                             if(f.getLado2() == this.obtenerValorInicioLinea()){
                                 lineajuego.add(0, f);
                                 bot.removerFicha(f);
-<<<<<<< HEAD
                                 break;
-=======
->>>>>>> comentarios
                             }
                             else if(f.getLado1() == this.ObtenerValorFinLinea()){
                                 lineajuego.add(f);
                                 bot.removerFicha(f);
-<<<<<<< HEAD
                                 break;
-=======
->>>>>>> comentarios
                             }
                     }
                     
