@@ -55,6 +55,7 @@ public class Jugador {
         }
         
     }
+    //verifica si se puede seguir jugando
     public boolean jugabilidad(Juego juego){
         if(juego.getLineajuego().isEmpty()){
             return true;
@@ -75,6 +76,7 @@ public class Jugador {
                 }
         }
     }
+    //verifica si el jugador tiene alguna ficha comodin en su mano
     public boolean tieneComodin(){
         for(Ficha f: this.getMano()){
             if(f instanceof FichaComodin){

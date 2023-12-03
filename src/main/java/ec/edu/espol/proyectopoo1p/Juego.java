@@ -54,11 +54,12 @@ public class Juego {
                 System.out.println(lineajuego.get(i).toString());
         }
     }
+    //devuelve bool en el caso que movimiento sea valido
     public boolean agregarFichaLinea(Ficha f, Jugador j){ //agrega ficha a linea(mesa); retorna booleano y remueve ficha de la mano
-        boolean resultado = false;
         Scanner sc = new Scanner(System.in);
         if(f instanceof FichaComodin ){
             FichaComodin f2 = (FichaComodin) f;
+            //si no hay linea juego - esta vacia siendo comodin
             if(lineajuego.isEmpty()){
                 System.out.println("Ingrese el lado 1");
                 int l1 = sc.nextInt();
@@ -79,8 +80,10 @@ public class Juego {
                 return true;
             }
             else{
+                //si hay elementos en lineaJuego, pero siendo comodin
                 System.out.println("Ingrese la posición de la ficha(Inicio o Fin): ");
                 String pos = sc.next();
+                //validacion
                 while(!(pos.toUpperCase().equals("INICIO")) && !(pos.toUpperCase().equals("FIN"))){
                     System.out.println("Ingrese una posición correcta para la ficha(Inicio o Fin): ");
                     pos = sc.next();
@@ -112,12 +115,14 @@ public class Juego {
             }
         }
         else{
+            //si esta vacia
             if (lineajuego.isEmpty()){
                 lineajuego.add(f);
                 j.removerFicha(f);
                 return true;
             }
             else{
+                //si hay elementos
                 if(f.getLado2() == this.obtenerValorInicioLinea()){
                         lineajuego.add(0, f);
                         j.removerFicha(f);
@@ -133,9 +138,10 @@ public class Juego {
         return false;
         }
     
+    //comportamiento - decide cual ficha escoge, asigna random si es comodin
     public void maquina(Jugador bot){
         for(Ficha f: bot.getMano()){
-            //si es f/ comodin
+            //si es f comodin
             if(f instanceof FichaComodin f2){
                 Random rd = new Random();
                 //va al inicio o al final
@@ -156,6 +162,7 @@ public class Juego {
                     break;
                 }
             }
+            //si es que no hay elementos en la lineaJuego
             if(lineajuego.isEmpty()){
                 lineajuego.add(f);
                 bot.removerFicha(f);
