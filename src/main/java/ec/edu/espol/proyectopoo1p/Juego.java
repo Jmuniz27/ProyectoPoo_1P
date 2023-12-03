@@ -54,7 +54,7 @@ public class Juego {
                 System.out.println(lineajuego.get(i).toString());
         }
     }
-    public boolean agregarFichaLinea(Ficha f, Jugador j){
+    public boolean agregarFichaLinea(Ficha f, Jugador j){ //retorna booleano y remueve ficha
         boolean resultado = false;
         Scanner sc = new Scanner(System.in);
         if(f instanceof FichaComodin ){
@@ -68,6 +68,7 @@ public class Juego {
                 f2.setLado2(l2);
                 lineajuego.add(f2);
                 resultado = true;
+                j.removerFicha(f);
                 return resultado;
             }
             else{
@@ -78,6 +79,7 @@ public class Juego {
                     int l1 = sc.nextInt();
                     f.setLado1(l1);
                     lineajuego.add(0, f);
+                    j.removerFicha(f);
                     resultado = true;
                     return resultado;
                 }
@@ -86,6 +88,7 @@ public class Juego {
                     int l2 = sc.nextInt();
                     f.setLado2(l2);
                     lineajuego.add(f);
+                    j.removerFicha(f);
                     resultado = true;
                     return resultado;
                 }
@@ -94,6 +97,7 @@ public class Juego {
         else{
             if (lineajuego.size()==0){
                 lineajuego.add(f);
+                j.removerFicha(f);
                 resultado = true;
                 return resultado;
             }
@@ -102,10 +106,12 @@ public class Juego {
                     if(f.getLado2() == this.obtenerValorInicioLinea()){
                         resultado = true;
                         lineajuego.add(0, f);
+                        j.removerFicha(f);
                     }
                     else if(f.getLado1() == this.ObtenerValorFinLinea()){
                         resultado = true;
                         lineajuego.add(f);
+                        j.removerFicha(f);
                     }
                     return resultado;
                 }
