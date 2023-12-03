@@ -123,49 +123,52 @@ public class Juego {
     
     public void maquina(Jugador bot){
         for(Ficha f: bot.getMano()){
+            //si es f/ comodin
+            if(f instanceof FichaComodin f2){
+                Random rd = new Random();
+                //va al inicio o al final
+                boolean aleatorio1 = rd.nextBoolean();
+
+                //si es que va al inicio
+                if (aleatorio1){
+                    f2.setLado1(rd.nextInt(1,7));
+                    lineajuego.add(0, f2);
+                    bot.removerFicha(f);
+                    break;
+                }
+                //si es que va al final
+                else{
+                    f2.setLado2(rd.nextInt(1,7));
+                    lineajuego.add(f2);
+                    bot.removerFicha(f);
+                    break;
+                }
+            }
             if(lineajuego.isEmpty()){
                 lineajuego.add(f);
                 bot.removerFicha(f);
                 break;
             }else{
-                //si es f/ comodin
-                if(f instanceof FichaComodin){
-                    FichaComodin f2 = (FichaComodin) f;
-                    Random rd = new Random();
-                    //va al inicio o al final
-                    int aleatorio1 = rd.nextInt(0,2);
-                    
-                    //si es que va al inicio
-                    if (aleatorio1 == 0){
-                        f.setLado1(rd.nextInt(1,7));
-                        lineajuego.add(0, f);
-                        bot.removerFicha(f);
-                    }
-                    //si es que va al final
-                    else if (aleatorio1 == 1){
-                        f.setLado2(rd.nextInt(1,7));
-                        lineajuego.add(f);
-                        bot.removerFicha(f);
-                    }
-                }
-                else{
                     //si no es f comodin
                     if (lineajuego.isEmpty()){
                         lineajuego.add(f);
+                        bot.removerFicha(f);
+                        break;
                     }
                     else{
-                        if(f.getLado2() == this.obtenerValorInicioLinea() || f.getLado1() == this.ObtenerValorFinLinea()){
                             if(f.getLado2() == this.obtenerValorInicioLinea()){
                                 lineajuego.add(0, f);
+                                bot.removerFicha(f);
+                                break;
                             }
                             else if(f.getLado1() == this.ObtenerValorFinLinea()){
                                 lineajuego.add(f);
+                                bot.removerFicha(f);
+                                break;
                             }
-                        }
                     }
                     
                 }
             }
         }
     }
-}
