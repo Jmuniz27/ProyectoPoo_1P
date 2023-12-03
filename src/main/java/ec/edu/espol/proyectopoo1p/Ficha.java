@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.proyectopoo1p;
 
+import java.util.Scanner;
+
 /**
  *
  * @author jmuni
