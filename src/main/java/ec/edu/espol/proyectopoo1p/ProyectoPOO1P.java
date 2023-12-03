@@ -112,15 +112,15 @@ public class ProyectoPOO1P {
             //imprimir quien gana y pierde
             if(jugador.jugabilidad(juego)==false){
                 if(jugador.getMano().size()==0)
-                    System.out.println("El jugador "+jugador.getNombre()+" gana ya que jugó sus fichas. El "+bot.getNombre()+ " pierde.");
+                    System.out.println("El jugador "+jugador.getNombre()+" gana ya que jugó sus fichas. El jugador "+bot.getNombre()+ " pierde.");
                 else
-                    System.out.println("El jugador "+jugador.getNombre()+" ya no puede jugar fichas. El "+bot.getNombre()+ " gana.");
+                    System.out.println("El jugador "+jugador.getNombre()+" ya no puede jugar fichas. El jugador "+bot.getNombre()+ " gana.");
             }
             else{
                 if(bot.getMano().size()==0)
-                    System.out.println("El jugador "+bot.getNombre()+" gana ya que jugó sus fichas. El "+jugador.getNombre()+ " pierde.");
+                    System.out.println("El jugador "+bot.getNombre()+" gana ya que jugó sus fichas. El jugador "+jugador.getNombre()+ " pierde.");
                 else
-                    System.out.println("El jugador "+bot.getNombre()+" ya no puede jugar fichas. El "+jugador.getNombre()+ " gana.");               
+                    System.out.println("El jugador "+bot.getNombre()+" ya no puede jugar fichas. El jugador "+jugador.getNombre()+ " gana.");               
             }
         }
     }
