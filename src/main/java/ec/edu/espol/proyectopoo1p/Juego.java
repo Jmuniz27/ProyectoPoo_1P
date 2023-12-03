@@ -54,7 +54,7 @@ public class Juego {
                 System.out.println(lineajuego.get(i).toString());
         }
     }
-    public boolean agregarFichaLinea(Ficha f, Jugador j){ //retorna booleano y remueve ficha
+    public boolean agregarFichaLinea(Ficha f, Jugador j){ //agrega ficha a linea(mesa); retorna booleano y remueve ficha de la mano
         boolean resultado = false;
         Scanner sc = new Scanner(System.in);
         if(f instanceof FichaComodin ){

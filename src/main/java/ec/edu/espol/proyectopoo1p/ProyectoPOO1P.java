@@ -29,11 +29,12 @@ public class ProyectoPOO1P {
             juego.agregarJugador(j2);
             while(juego.getJugadores().get(0).getMano().size()!=0 || juego.getJugadores().get(1).getMano().size()!=0){
                 //JUGADOR0
-                System.out.println("Jugador 0: Mano -> ");
+                System.out.println("-------------------\nJugador 0\n-------------------");
+                System.out.print("Jugador 0: Mano -> ");
                 juego.getJugadores().get(0).imprimirMano();
-                System.out.println("Linea de Juego -> ");
+                System.out.print("Linea de Juego -> ");
                 juego.mostrarLinea();
-                System.out.println("Indice de ficha para jugar (0 es el primero): ");
+                System.out.print("Indice de ficha para jugar (0 es el primero): ");
                 int pos = sc.nextInt();
                 //el siguiente while valida que pos1 sea correcto
                 while(pos < 0 || pos >= juego.getJugadores().get(0).getMano().size()){
@@ -54,6 +55,7 @@ public class ProyectoPOO1P {
                 
                 
                 //JUGADOR1
+                System.out.println("-------------------\nJugador 1\n-------------------");
                 System.out.println("Jugador 1: Mano -> ");
                 juego.getJugadores().get(1).imprimirMano();
                 System.out.println("Linea de Juego -> ");
