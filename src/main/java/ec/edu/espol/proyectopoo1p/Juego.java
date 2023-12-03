@@ -62,8 +62,16 @@ public class Juego {
             if(lineajuego.isEmpty()){
                 System.out.println("Ingrese el lado 1");
                 int l1 = sc.nextInt();
+                while(l1<1 || l1>6){
+                    System.out.println("Ingrese un valor correcto para el lado: ");
+                    l1 = sc.nextInt();
+                }
                 System.out.println("Ingrese el lado 2");
                 int l2 = sc.nextInt();
+                while(l2<1 || l2>6){
+                    System.out.println("Ingrese un valor correcto para el lado: ");
+                    l2 = sc.nextInt();
+                }
                 f2.setLado1(l1);
                 f2.setLado2(l2);
                 lineajuego.add(f2);
@@ -74,9 +82,17 @@ public class Juego {
             else{
                 System.out.println("Ingrese la posición de la ficha(Inicio o Fin): ");
                 String pos = sc.next();
-                if (pos.equals("Inicio")){
+                while(!(pos.toUpperCase().equals("INICIO")) && !(pos.toUpperCase().equals("FIN"))){
+                    System.out.println("Ingrese una posición correcta para la ficha(Inicio o Fin): ");
+                    pos = sc.next();
+                }
+                if (pos.toUpperCase().equals("INICIO")){
                     System.out.println("Ingrese el valor del lado 1: ");
                     int l1 = sc.nextInt();
+                    while(l1<1 || l1>6){
+                        System.out.println("Ingrese un valor correcto para el lado: ");
+                        l1 = sc.nextInt();
+                    }
                     f.setLado1(l1);
                     lineajuego.add(0, f);
                     j.removerFicha(f);
@@ -86,6 +102,10 @@ public class Juego {
                 else{
                     System.out.println("Ingrese el valor del lado 2: ");
                     int l2 = sc.nextInt();
+                    while(l2<1 || l2>6){
+                        System.out.println("Ingrese un valor correcto para el lado: ");
+                        l2 = sc.nextInt();
+                    }
                     f.setLado2(l2);
                     lineajuego.add(f);
                     j.removerFicha(f);
@@ -156,18 +176,17 @@ public class Juego {
                         break;
                     }
                     else{
-                            if(f.getLado2() == this.obtenerValorInicioLinea()){
-                                lineajuego.add(0, f);
-                                bot.removerFicha(f);
-                                break;
-                            }
-                            else if(f.getLado1() == this.ObtenerValorFinLinea()){
-                                lineajuego.add(f);
-                                bot.removerFicha(f);
-                                break;
-                            }
+                        if(f.getLado2() == this.obtenerValorInicioLinea()){
+                            lineajuego.add(0, f);
+                            bot.removerFicha(f);
+                            break;
+                        }
+                        else if(f.getLado1() == this.ObtenerValorFinLinea()){
+                            lineajuego.add(f);
+                            bot.removerFicha(f);
+                            break;
+                        }
                     }
-                    
                 }
             }
         }
