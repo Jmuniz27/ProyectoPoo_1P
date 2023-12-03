@@ -40,7 +40,7 @@ public class ProyectoPOO1P {
                     if(!jugador0.jugabilidad(juego)){
                         ProyectoPOO1P.jugadorJuego(jugador1, juego);
                     }
-                    if(!jugador1.jugabilidad(juego)){
+                    else if(!jugador1.jugabilidad(juego)){
                         ProyectoPOO1P.jugadorJuego(jugador0, juego);
                     }
                 }
