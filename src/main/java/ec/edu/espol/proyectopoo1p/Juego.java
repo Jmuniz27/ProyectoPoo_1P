@@ -133,17 +133,17 @@ public class Juego {
                     FichaComodin f2 = (FichaComodin) f;
                     Random rd = new Random();
                     //va al inicio o al final
-                    int aleatorio1 = rd.nextInt(0,1);
+                    int aleatorio1 = rd.nextInt(0,2);
                     
                     //si es que va al inicio
                     if (aleatorio1 == 0){
-                        f.setLado1(rd.nextInt(1,6));
+                        f.setLado1(rd.nextInt(1,7));
                         lineajuego.add(0, f);
                         bot.removerFicha(f);
                     }
                     //si es que va al final
                     else if (aleatorio1 == 1){
-                        f.setLado2(rd.nextInt(1,6));
+                        f.setLado2(rd.nextInt(1,7));
                         lineajuego.add(f);
                         bot.removerFicha(f);
                     }
