@@ -168,4 +168,17 @@ public class Juego {
             }
         }
     }
-}
+    public boolean jugabilidad(Jugador j){
+        int cont = 0;
+        boolean result = false;
+        for(Ficha f : j.getMano()){
+            if (f instanceof FichaComodin || f.getLado1() == this.ObtenerValorFinLinea() || f.getLado2() == this.obtenerValorInicioLinea()){
+                cont +=1;
+            }
+        if (cont != 0){
+            result = true;
+        }
+        }
+        return result;
+        }
+    }
