@@ -54,7 +54,7 @@ public class Juego {
                 System.out.println(lineajuego.get(i).toString());
         }
     }
-    public boolean agregarFichaLinea(Ficha f, Jugador j){ //retorna booleano y remueve ficha
+    public boolean agregarFichaLinea(Ficha f, Jugador j){ //agrega ficha a linea(mesa); retorna booleano y remueve ficha de la mano
         boolean resultado = false;
         Scanner sc = new Scanner(System.in);
         if(f instanceof FichaComodin ){
@@ -168,17 +168,4 @@ public class Juego {
             }
         }
     }
-    public boolean jugabilidad(Jugador j){
-        int cont = 0;
-        boolean result = false;
-            for(Ficha f : j.getMano()){
-                if (f instanceof FichaComodin || f.getLado1() == this.ObtenerValorFinLinea() || f.getLado2() == this.obtenerValorInicioLinea()){
-                    cont +=1;
-                }
-            if (cont != 0){
-                result = true;
-            }
-            }
-            return result;
-        }
-    }
+}

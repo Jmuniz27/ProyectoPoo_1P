@@ -27,37 +27,47 @@ public class ProyectoPOO1P {
             System.out.print("Ingrese nombre Jugador 1>> ");
             String j2 = sc.next();
             juego.agregarJugador(j2);
-            while(juego.getJugadores().get(0).getMano().size()!=0 || juego.getJugadores().get(1).getMano().size()!=0){
+            Jugador jugador0 = juego.getJugadores().get(0);
+            Jugador jugador1 = juego.getJugadores().get(1);
+            while(jugador0.jugabilidad(juego) || jugador1.jugabilidad(juego)){
                 //JUGADOR0
-                System.out.println("Jugador 0: Mano -> ");
+                System.out.println("-------------------\nJugador 0\n-------------------");
+                System.out.print("Jugador 0: Mano -> ");
                 juego.getJugadores().get(0).imprimirMano();
-                System.out.println("Linea de Juego -> ");
+                System.out.print("Linea de Juego -> ");
                 juego.mostrarLinea();
-                System.out.println("Indice de ficha para jugar (0 es el primero): ");
-                int pos = sc.nextInt();
-                //el siguiente while valida que pos1 sea correcto
-                while(pos < 0 || pos >= juego.getJugadores().get(0).getMano().size()){
-                    System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
-                    pos = sc.nextInt();
+                if(jugador0.jugabilidad(juego)){
+                    System.out.print("Indice de ficha para jugar (0 es el primero): ");
+                    int pos = sc.nextInt();
+                    //el siguiente while valida que pos1 sea correcto
+                    while(pos < 0 || pos >= juego.getJugadores().get(0).getMano().size()){
+                        System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
+                        pos = sc.nextInt();
+                    }
+                    Ficha f = jugador0.getMano().get(pos);                
+                    boolean a= juego.agregarFichaLinea(f,jugador0);//Intenta agregar la ficha
+                    while(a==false){ //valida que se cumpla el boolean de aggficha
+                        System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
+                        pos = sc.nextInt();
+                        f = jugador0.getMano().get(pos);                
+                        juego.agregarFichaLinea(f,jugador0);
+                        a = juego.agregarFichaLinea(f,jugador0);
+                    }
+                    System.out.print("Nueva línea de juego -> ");
+                    juego.mostrarLinea();
+                }else {
+                    System.out.println("Perdiste");
+                    break;
                 }
-                Ficha f = juego.getJugadores().get(0).getMano().get(pos);                
-                boolean a= juego.agregarFichaLinea(f,juego.getJugadores().get(0));//Intenta agregar la ficha
-                while(a==false){ //valida que se cumpla el boolean de aggficha
-                    System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
-                    pos = sc.nextInt();
-                    f = juego.getJugadores().get(0).getMano().get(pos);                
-                    juego.agregarFichaLinea(f,juego.getJugadores().get(0));
-                    a = juego.agregarFichaLinea(f,juego.getJugadores().get(0));
-                }
-                System.out.println("Nueva línea de juego -> ");
-                juego.mostrarLinea();
                 
                 
                 //JUGADOR1
+                System.out.println("-------------------\nJugador 1\n-------------------");
                 System.out.println("Jugador 1: Mano -> ");
                 juego.getJugadores().get(1).imprimirMano();
                 System.out.println("Linea de Juego -> ");
                 juego.mostrarLinea();
+                if(jugador1.jugabilidad(juego)){
                 System.out.println("Indice de ficha para jugar (0 es el primero): ");
                 int pos2 = sc.nextInt();
                 //el siguiente while valida que pos2 sea correcto
@@ -65,17 +75,21 @@ public class ProyectoPOO1P {
                     System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
                     pos2 = sc.nextInt();
                 }
-                Ficha f1 = juego.getJugadores().get(1).getMano().get(pos2);                
-                boolean b = juego.agregarFichaLinea(f1,juego.getJugadores().get(1)); //Intenta agregar la ficha
+                Ficha f1 = jugador1.getMano().get(pos2);                
+                boolean b = juego.agregarFichaLinea(f1,jugador1); //Intenta agregar la ficha
                 while(b==false){ //valida que se cumpla el boolean de aggficha
                     System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
                     pos2 = sc.nextInt();
-                    f1 = juego.getJugadores().get(1).getMano().get(pos2);                
-                    juego.agregarFichaLinea(f1,juego.getJugadores().get(1));
-                    b = juego.agregarFichaLinea(f1,juego.getJugadores().get(1));
+                    f1 = jugador1.getMano().get(pos2);                
+                    juego.agregarFichaLinea(f1,jugador1);
+                    b = juego.agregarFichaLinea(f1,jugador1);
                 }
-                System.out.println("Nueva línea de juego -> ");
+                System.out.print("Nueva línea de juego -> ");
                 juego.mostrarLinea();
+                }else{
+                    System.out.println("Perdiste");
+                    break;
+                }
                 
             }
         }
