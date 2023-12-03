@@ -110,18 +110,15 @@ public class ProyectoPOO1P {
         int pos = sc.nextInt();
         //el siguiente while valida que pos1 sea correcto
         while(pos < 0 || pos >= jugador.getMano().size()){
-            System.out.println("aqui cae 1");
             System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
             pos = sc.nextInt();
         }
         Ficha f = jugador.getMano().get(pos);                
         boolean a= juego.agregarFichaLinea(f,jugador);//Intenta agregar la ficha
         while(!a){ //valida que se cumpla el boolean de aggficha
-            System.out.println("aqui cae 2");
             System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
             pos = sc.nextInt();
             while(pos < 0 || pos >= jugador.getMano().size()){
-                System.out.println("aqui cae 3");
                 System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
                 pos = sc.nextInt();
             }
