@@ -49,7 +49,7 @@ public class Juego {
     public void mostrarLinea(){
         for(int i = 0; i< lineajuego.size(); i++){
             if(i != lineajuego.size()-1)
-                System.out.print(lineajuego.get(i).toString() + " -");
+                System.out.print(lineajuego.get(i).toString() + " - ");
             else
                 System.out.println(lineajuego.get(i).toString());
         }
@@ -133,17 +133,17 @@ public class Juego {
                     FichaComodin f2 = (FichaComodin) f;
                     Random rd = new Random();
                     //va al inicio o al final
-                    int aleatorio1 = rd.nextInt(0,1);
+                    int aleatorio1 = rd.nextInt(0,2);
                     
                     //si es que va al inicio
                     if (aleatorio1 == 0){
-                        f.setLado1(rd.nextInt(1,6));
+                        f2.setLado1(rd.nextInt(1,7));
                         lineajuego.add(0, f);
                         bot.removerFicha(f);
                     }
                     //si es que va al final
                     else if (aleatorio1 == 1){
-                        f.setLado2(rd.nextInt(1,6));
+                        f2.setLado2(rd.nextInt(1,7));
                         lineajuego.add(f);
                         bot.removerFicha(f);
                     }
@@ -152,14 +152,17 @@ public class Juego {
                     //si no es f comodin
                     if (lineajuego.isEmpty()){
                         lineajuego.add(f);
+                        bot.removerFicha(f);
                     }
                     else{
                         if(f.getLado2() == this.obtenerValorInicioLinea() || f.getLado1() == this.ObtenerValorFinLinea()){
                             if(f.getLado2() == this.obtenerValorInicioLinea()){
                                 lineajuego.add(0, f);
+                                bot.removerFicha(f);
                             }
                             else if(f.getLado1() == this.ObtenerValorFinLinea()){
                                 lineajuego.add(f);
+                                bot.removerFicha(f);
                             }
                         }
                     }

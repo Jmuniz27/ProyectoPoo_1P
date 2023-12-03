@@ -68,7 +68,7 @@ public class Jugador {
                             return true;
                         }
                     else if(f.getLado1()== juego.ObtenerValorFinLinea() || f.getLado2() == juego.obtenerValorInicioLinea()){
-                                return true;
+                            return true;
                         }
                     }
                 }

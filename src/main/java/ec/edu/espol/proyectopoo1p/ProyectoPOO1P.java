@@ -29,7 +29,7 @@ public class ProyectoPOO1P {
             juego.agregarJugador(j2);
             Jugador jugador0 = juego.getJugadores().get(0);
             Jugador jugador1 = juego.getJugadores().get(1);
-            while(jugador0.jugabilidad(juego) || jugador1.jugabilidad(juego)){
+            while(jugador0.jugabilidad(juego) && jugador1.jugabilidad(juego)){ //AMBOS jugadores deben de poder jugar para que el juego siga
                 //JUGADOR0
                 System.out.println("-------------------\nJugador 0\n-------------------");
                 System.out.print("Jugador 0: Mano -> ");
@@ -40,7 +40,7 @@ public class ProyectoPOO1P {
                     System.out.print("Indice de ficha para jugar (0 es el primero): ");
                     int pos = sc.nextInt();
                     //el siguiente while valida que pos1 sea correcto
-                    while(pos < 0 || pos >= juego.getJugadores().get(0).getMano().size()){
+                    while(pos < 0 || pos >= juego.getJugadores().get(0).getMano().size()){ 
                         System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
                         pos = sc.nextInt();
                     }
@@ -90,8 +90,8 @@ public class ProyectoPOO1P {
                     System.out.println("Perdiste");
                     break;
                 }
-                
             }
+            
         }
     }
 }
