@@ -28,8 +28,8 @@ public class Jugador {
     }
 
     public Ficha getFicha(int i) {
-        if (i-1 < mano.size() && i-1>=0)
-            return this.mano.get(i-1);
+        if (i < mano.size() && i>=0)
+            return this.mano.get(i);
         else
             return null;
     }
