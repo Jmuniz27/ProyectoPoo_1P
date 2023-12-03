@@ -37,10 +37,10 @@ public class ProyectoPOO1P {
                 ProyectoPOO1P.jugadorJuego(jugador1, juego);
                 
                 if(!jugador0.jugabilidad(juego) || !jugador1.jugabilidad(juego)){
-                    if(!jugador0.jugabilidad(juego)){
+                    if(!jugador0.jugabilidad(juego) && jugador1.tieneComodin()){
                         ProyectoPOO1P.jugadorJuego(jugador1, juego);
                     }
-                    else if(!jugador1.jugabilidad(juego)){
+                    else if(!jugador1.jugabilidad(juego) && jugador0.tieneComodin()){
                         ProyectoPOO1P.jugadorJuego(jugador0, juego);
                     }
                 }
@@ -78,10 +78,25 @@ public class ProyectoPOO1P {
                 if(primero){
                     ProyectoPOO1P.jugadorJuego(jugador, juego);
                     ProyectoPOO1P.botJuego(bot, juego);
+                    if(!jugador.jugabilidad(juego) || !bot.jugabilidad(juego)){
+                    if(!jugador.jugabilidad(juego) && bot.tieneComodin()){
+                        ProyectoPOO1P.jugadorJuego(bot, juego);
+                    }
+                    else if(!bot.jugabilidad(juego) && jugador.tieneComodin()){
+                        ProyectoPOO1P.jugadorJuego(jugador, juego);
+                    }
+                }
                 }
                 else{
                     ProyectoPOO1P.botJuego(bot, juego);
-                    ProyectoPOO1P.jugadorJuego(jugador, juego);                    
+                    ProyectoPOO1P.jugadorJuego(jugador, juego); 
+                    if(!jugador.jugabilidad(juego) || !bot.jugabilidad(juego)){
+                    if(!jugador.jugabilidad(juego) && bot.tieneComodin()){
+                        ProyectoPOO1P.jugadorJuego(bot, juego);
+                    }
+                    else if(!bot.jugabilidad(juego) && jugador.tieneComodin()){
+                        ProyectoPOO1P.jugadorJuego(jugador, juego);
+                    }
                 }
             }
             if(jugador.jugabilidad(juego)==false){
@@ -98,6 +113,7 @@ public class ProyectoPOO1P {
             }
         }
     }
+}
     public static void jugadorJuego(Jugador jugador, Juego juego){
         Scanner sc = new Scanner(System.in);
         System.out.println("-------------------\nJugador " + jugador.getNombre() +"\n-------------------");

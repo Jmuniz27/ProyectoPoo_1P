@@ -75,5 +75,13 @@ public class Jugador {
                 }
         }
     }
+    public boolean tieneComodin(){
+        for(Ficha f: this.getMano()){
+            if(f instanceof FichaComodin){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
