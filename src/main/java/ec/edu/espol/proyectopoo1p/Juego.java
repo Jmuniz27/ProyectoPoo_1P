@@ -75,9 +75,8 @@ public class Juego {
                 f2.setLado1(l1);
                 f2.setLado2(l2);
                 lineajuego.add(f2);
-                resultado = true;
                 j.removerFicha(f);
-                return resultado;
+                return true;
             }
             else{
                 System.out.println("Ingrese la posición de la ficha(Inicio o Fin): ");
@@ -96,8 +95,7 @@ public class Juego {
                     f.setLado1(l1);
                     lineajuego.add(0, f);
                     j.removerFicha(f);
-                    resultado = true;
-                    return resultado;
+                    return true;
                 }
                 else{
                     System.out.println("Ingrese el valor del lado 2: ");
@@ -109,37 +107,31 @@ public class Juego {
                     f.setLado2(l2);
                     lineajuego.add(f);
                     j.removerFicha(f);
-                    resultado = true;
-                    return resultado;
+                    return true;
                 }
             }
         }
         else{
-            if (lineajuego.size()==0){
+            if (lineajuego.isEmpty()){
                 lineajuego.add(f);
                 j.removerFicha(f);
-                resultado = true;
-                return resultado;
+                return true;
             }
             else{
-                if(f.getLado2() == this.obtenerValorInicioLinea() || f.getLado1() == this.ObtenerValorFinLinea()){
-                    if(f.getLado2() == this.obtenerValorInicioLinea()){
-                        resultado = true;
+                if(f.getLado2() == this.obtenerValorInicioLinea()){
                         lineajuego.add(0, f);
                         j.removerFicha(f);
+                        return true;
                     }
                     else if(f.getLado1() == this.ObtenerValorFinLinea()){
-                        resultado = true;
                         lineajuego.add(f);
                         j.removerFicha(f);
+                        return true;
                     }
-                    return resultado;
                 }
-                else
-                    return resultado;
             }
+        return false;
         }
-    }
     
     public void maquina(Jugador bot){
         for(Ficha f: bot.getMano()){
