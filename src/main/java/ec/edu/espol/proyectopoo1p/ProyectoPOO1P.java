@@ -102,9 +102,9 @@ public class ProyectoPOO1P {
                     //caso en el cual, el jug no puede jugar pero el otro (bot) tiene un comodin y vice
                     if(!jugador.jugabilidad(juego) || !bot.jugabilidad(juego)){
                         if(!jugador.jugabilidad(juego) && bot.tieneComodin()){
-                            ProyectoPOO1P.jugadorJuego(bot, juego);
+                            ProyectoPOO1P.botJuego(bot, juego);
                         }
-                        else if(!bot.jugabilidad(juego) && jugador.tieneComodin()){
+                        if(!bot.jugabilidad(juego) && jugador.tieneComodin()){
                             ProyectoPOO1P.jugadorJuego(jugador, juego);
                         }
                 }
