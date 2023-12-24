@@ -19,14 +19,12 @@ public class Utilitaria {
         int aleatorio2;
         for (int i = 0; i < 5 ; i++)
         {
-            aleatorio1 = rd.nextInt(1,6);
-            aleatorio2 = rd.nextInt(1,6);
+            aleatorio1 = rd.nextInt(1,7);
+            aleatorio2 = rd.nextInt(1,7);
             Ficha n = new Ficha(aleatorio1,aleatorio2);
             manojug.add(n);
         }
-        aleatorio1 = rd.nextInt(1,6);
-        aleatorio2 = rd.nextInt(1,6);
-        manojug.add(new FichaComodin(aleatorio1,aleatorio2));
+        manojug.add(new FichaComodin());
         return manojug;
     }
 }

@@ -55,4 +55,35 @@ public class Jugador {
         }
         
     }
+    //verifica si se puede seguir jugando
+    public boolean jugabilidad(Juego juego){
+        if(juego.getLineajuego().isEmpty()){
+            return true;
+        }else{
+            if(this.getMano().isEmpty()){
+                return false;
+                }
+            else{
+                for(Ficha f : this.getMano()){
+                    if (f instanceof FichaComodin){
+                            return true;
+                        }
+                    else if(f.getLado1()== juego.ObtenerValorFinLinea() || f.getLado2() == juego.obtenerValorInicioLinea()){
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+        }
+    }
+    //verifica si el jugador tiene alguna ficha comodin en su mano
+    public boolean tieneComodin(){
+        for(Ficha f: this.getMano()){
+            if(f instanceof FichaComodin){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

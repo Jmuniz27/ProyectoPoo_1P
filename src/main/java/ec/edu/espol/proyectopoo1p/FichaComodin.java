@@ -10,7 +10,7 @@ package ec.edu.espol.proyectopoo1p;
  */
 public class FichaComodin extends Ficha {
     
-    public FichaComodin(int lado1, int lado2) {
+    public FichaComodin() {
         super(-1,-1);
     }
 

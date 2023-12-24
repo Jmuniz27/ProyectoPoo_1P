@@ -6,6 +6,8 @@ package ec.edu.espol.proyectopoo1p;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
+
 
 /**
  *
@@ -47,118 +49,144 @@ public class Juego {
     public void mostrarLinea(){
         for(int i = 0; i< lineajuego.size(); i++){
             if(i != lineajuego.size()-1)
-                System.out.print(lineajuego.get(i).toString() + " -");
+                System.out.print(lineajuego.get(i).toString() + " - ");
             else
                 System.out.println(lineajuego.get(i).toString());
         }
     }
-    public boolean agregarFichaLinea(Ficha f, Jugador j){
-        boolean resultado = false;
+    //devuelve bool en el caso que movimiento sea valido
+    public boolean agregarFichaLinea(Ficha f, Jugador j){ //agrega ficha a linea(mesa); retorna booleano y remueve ficha de la mano
         Scanner sc = new Scanner(System.in);
-
         if(f instanceof FichaComodin ){
             FichaComodin f2 = (FichaComodin) f;
+            //si no hay linea juego - esta vacia siendo comodin
             if(lineajuego.isEmpty()){
                 System.out.println("Ingrese el lado 1");
                 int l1 = sc.nextInt();
+                while(l1<1 || l1>6){
+                    System.out.println("Ingrese un valor correcto para el lado: ");
+                    l1 = sc.nextInt();
+                }
                 System.out.println("Ingrese el lado 2");
                 int l2 = sc.nextInt();
+                while(l2<1 || l2>6){
+                    System.out.println("Ingrese un valor correcto para el lado: ");
+                    l2 = sc.nextInt();
+                }
                 f2.setLado1(l1);
                 f2.setLado2(l2);
                 lineajuego.add(f2);
                 j.removerFicha(f);
-                resultado = true;
-                return resultado;
+                return true;
             }
             else{
+                //si hay elementos en lineaJuego, pero siendo comodin
                 System.out.println("Ingrese la posición de la ficha(Inicio o Fin): ");
                 String pos = sc.next();
-                if (pos.equals("Inicio")){
+                //validacion
+                while(!(pos.toUpperCase().equals("INICIO")) && !(pos.toUpperCase().equals("FIN"))){
+                    System.out.println("Ingrese una posición correcta para la ficha(Inicio o Fin): ");
+                    pos = sc.next();
+                }
+                if (pos.toUpperCase().equals("INICIO")){
                     System.out.println("Ingrese el valor del lado 1: ");
                     int l1 = sc.nextInt();
-                    ((FichaComodin) f).setLado1(l1);
-                    ((FichaComodin) f).setLado2(this.obtenerValorInicioLinea());
+                    while(l1<1 || l1>6){
+                        System.out.println("Ingrese un valor correcto para el lado: ");
+                        l1 = sc.nextInt();
+                    }
+                    f.setLado1(l1);
                     lineajuego.add(0, f);
                     j.removerFicha(f);
-                    resultado = true;
-                    return resultado;
+                    return true;
                 }
                 else{
                     System.out.println("Ingrese el valor del lado 2: ");
                     int l2 = sc.nextInt();
-                    ((FichaComodin) f).setLado2(l2);
-                    ((FichaComodin) f).setLado1(this.ObtenerValorFinLinea());
+                    while(l2<1 || l2>6){
+                        System.out.println("Ingrese un valor correcto para el lado: ");
+                        l2 = sc.nextInt();
+                    }
+                    f.setLado2(l2);
                     lineajuego.add(f);
                     j.removerFicha(f);
-                    resultado = true;
-                    return resultado;
+                    return true;
                 }
             }
         }
         else{
+            //si esta vacia
             if (lineajuego.isEmpty()){
                 lineajuego.add(f);
                 j.removerFicha(f);
-                resultado = true;
-                return resultado;
+                return true;
             }
             else{
-                if(f.getLado2() == this.obtenerValorInicioLinea() || f.getLado1() == this.ObtenerValorFinLinea()){
-                    if(f.getLado2() == this.obtenerValorInicioLinea()){
+                //si hay elementos
+                if(f.getLado2() == this.obtenerValorInicioLinea()){
                         lineajuego.add(0, f);
                         j.removerFicha(f);
-                        resultado = true;
+                        return true;
                     }
                     else if(f.getLado1() == this.ObtenerValorFinLinea()){
                         lineajuego.add(f);
                         j.removerFicha(f);
-                        resultado = true;
-
+                        return true;
                     }
-                    return resultado;
-                }
-                else{
-                    System.out.println("Ficha tenía " + f.toString() + " No puedo jugar esa ficha, inténtalo de nuevo");
-                    resultado = false;
                 }
             }
+        return false;
         }
-        return resultado;
-    }
     
-    public boolean userBehavior(){
-        Scanner sc = new Scanner(System.in);
-        boolean conti = false;
-        
-        System.out.print("Jugador 0 -> ");
-        this.getJugadores().get(0).imprimirMano();
-        System.out.println("Linea de Juego -> ");
-        this.mostrarLinea();
-        System.out.print("Índice de ficha para jugar (0 es el primero): ");
-        int indice = sc.nextInt();
-        while (indice < 0 || indice >= this.getJugadores().get(0).getMano().size()){
-            System.out.print("Índice inválido, ingrese una posición correcta: ");
-            indice = sc.nextInt();
-        }
+    //comportamiento - decide cual ficha escoge, asigna random si es comodin
+    public void maquina(Jugador bot){
+        for(Ficha f: bot.getMano()){
+            //si es f comodin
+            if(f instanceof FichaComodin f2){
+                Random rd = new Random();
+                //va al inicio o al final
+                boolean aleatorio1 = rd.nextBoolean();
 
-        conti = true;
-        if (this.agregarFichaLinea(this.getJugadores().get(0).getMano().get(indice), this.getJugadores().get(0))){
-            System.out.println("Movimiento Válido.");
-            this.mostrarLinea();
-        }
-        else{
-
-            for (Ficha fich : this.getJugadores().get(0).getMano()){
-                if (fich.getLado1() == this.ObtenerValorFinLinea() || fich.getLado2() == this.obtenerValorInicioLinea()){
-
-                    conti = true;
-                    System.out.println("Ficha tenía "+ this.getJugadores().get(0).getMano().get(indice) + " No puedo jugar esa ficha, inténtalo de nuevo");
+                //si es que va al inicio
+                if (aleatorio1){
+                    f2.setLado1(rd.nextInt(1,7));
+                    lineajuego.add(0, f2);
+                    bot.removerFicha(f);
                     break;
                 }
-                else
-                    conti = false;
+                //si es que va al final
+                else{
+                    f2.setLado2(rd.nextInt(1,7));
+                    lineajuego.add(f2);
+                    bot.removerFicha(f);
+                    break;
+                }
+            }
+            //si es que no hay elementos en la lineaJuego
+            if(lineajuego.isEmpty()){
+                lineajuego.add(f);
+                bot.removerFicha(f);
+                break;
+            }else{
+                    //si no es f comodin
+                    if (lineajuego.isEmpty()){
+                        lineajuego.add(f);
+                        bot.removerFicha(f);
+                        break;
+                    }
+                    else{
+                        if(f.getLado2() == this.obtenerValorInicioLinea()){
+                            lineajuego.add(0, f);
+                            bot.removerFicha(f);
+                            break;
+                        }
+                        else if(f.getLado1() == this.ObtenerValorFinLinea()){
+                            lineajuego.add(f);
+                            bot.removerFicha(f);
+                            break;
+                        }
+                    }
+                }
             }
         }
-        return conti;
     }
-}
