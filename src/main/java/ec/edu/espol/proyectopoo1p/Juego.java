@@ -149,14 +149,14 @@ public class Juego {
 
                 //si es que va al inicio
                 if (aleatorio1){
-                    f2.setLado1(rd.nextInt(1,7));
+                    f2.setLado1(rd.nextInt(6)+1);
                     lineajuego.add(0, f2);
                     bot.removerFicha(f);
                     break;
                 }
                 //si es que va al final
                 else{
-                    f2.setLado2(rd.nextInt(1,7));
+                    f2.setLado2(rd.nextInt(6)+1);
                     lineajuego.add(f2);
                     bot.removerFicha(f);
                     break;
