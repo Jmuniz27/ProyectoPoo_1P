@@ -30,21 +30,20 @@ public class ProyectoPOO1P {
             
         if(primero){
             //inicio jugador
-            do{
-            jugador.jugadorJuego(juego);
-            if (!(jugador.jugabilidad(juego) && bot.jugabilidad(juego)))
-                    continue;
-            bot.botJuego(juego);
+            while(jugador.jugabilidad(juego) && bot.jugabilidad(juego)){
+                jugador.jugadorJuego(juego);
+                if(bot.jugabilidad(juego))
+                    bot.botJuego(juego);
+            }
             
-            }while(jugador.jugabilidad(juego) && bot.jugabilidad(juego));
+            
         }else{
             //inicia bot
-            do{
-            bot.botJuego(juego);
-            if (!(jugador.jugabilidad(juego) && bot.jugabilidad(juego)))
-                continue;
-            jugador.jugadorJuego(juego); 
-            }while(jugador.jugabilidad(juego) && bot.jugabilidad(juego));
+            while(jugador.jugabilidad(juego) && bot.jugabilidad(juego)){
+                bot.botJuego(juego);
+                if(jugador.jugabilidad(juego))
+                    jugador.jugadorJuego(juego); 
+            }
         }
             
         //imprimir quien gana y pierde
